@@ -112,13 +112,6 @@ def switch_splitting(i3, e, debug, outputs, workspaces, depth_limit, splitwidth,
                     elif debug:
                         print(f"Error: Switch failed with err {result[0].error}", file=sys.stderr)
 
-                if e.change in ["new", "move"] and con.percent:
-                    if con.parent.layout == "splitv" and splitheight != 1.0:  # top / bottom
-                        # print(f"split top fac {splitheight*100}")
-                        i3.command(f"resize set height {int(con.percent * splitheight * 100)} ppt")
-                    elif con.parent.layout == "splith" and splitwidth != 1.0:  # top / bottom:                     # left / right
-                        # print(f"split right fac {splitwidth*100} ")
-                        i3.command(f"resize set width {int(con.percent * splitwidth * 100)} ppt")
 
         elif debug:
             print("Debug: No focused container found or autotiling on the workspace turned off", file=sys.stderr)
